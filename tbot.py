@@ -1,14 +1,12 @@
 # encoding: utf-8
 
 # This code is free, THANK YOU!
-# It is explained at the guide you can found at www.theincompleteguide.com
-# You will also find improvement, ideas and explanations
-# You can buy it there, or donate. There's been effort here.
+# It is explained at the guide you can find at www.theincompleteguide.com
 
 from stocklib import *
 from traderlib import *
 from other_functions import *
-import threading, os, logging
+import threading, os, logging, sys
 from datetime import datetime
 import gvars
 from assetHandler import AssetHandler
@@ -70,10 +68,15 @@ def clean_open_orders(api):
 
 def check_account_ok(api):
 
-    account = api.get_account()
-    if account.account_blocked or account.trading_blocked or account.transfers_blocked:
+    try:
+        account = api.get_account()
+    except Exception as e:
+        _L.info('WARNING! Could not obtain you account. The error was: ')
+        _L.info(str(e))
+        sys.exit('Check it and restart the program')
 
-        print('OJO, account blocked. WTF?')
+    if account.account_blocked or account.trading_blocked or account.transfers_blocked:
+        print('WARNIG! Your Alpaca account is blocked. Check it on the web.')
         import pdb; pdb.set_trace()
 
 def run_tbot(_L,assHand,account):

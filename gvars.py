@@ -1,14 +1,12 @@
 # encoding: utf-8
 
 # This code is free, THANK YOU!
-# It is explained at the guide you can found at www.theincompleteguide.com
-# You will also find improvement, ideas and explanations
-# You can buy it there, or donate. There's been effort here.
+# It is explained at the guide you can find at www.theincompleteguide.com
 
 from pathlib import Path
 from datetime import datetime
 
-MAX_WORKERS = 10 # max threads at a time
+MAX_WORKERS = 1 # max threads at a time
 
 gainRatio = 1.5 # takeProfit = -stopLoss*gainRatio
 stopLossMargin = 0.05 # extra margin for the stop loss
@@ -16,12 +14,14 @@ stopLossMargin = 0.05 # extra margin for the stop loss
 operEquity = 10000 # defines the target amount per execution
 limitOrderMargin = 0.1# defines the offset for the limit orders
 
+#### FILL THESE VALUES ###########################
 API_KEY = ""
 API_SECRET_KEY = ""
 ALPACA_API_URL = "https://paper-api.alpaca.markets"
+#### FILL THESE VALUES ###########################
 
-if API_KEY is "" or API_SECRET_KEY is "":
-    print('Please get an API key at the Alpaca website!')
+if API_KEY == "" or API_SECRET_KEY == "":
+    print('\n\n #### Please get an API key at the Alpaca website! #### \n\n')
     raise ValueError
 
 ################################################################ ATTEMPTS ->
