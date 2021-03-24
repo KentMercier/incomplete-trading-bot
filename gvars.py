@@ -6,7 +6,7 @@
 from pathlib import Path
 from datetime import datetime
 
-MAX_WORKERS = 1 # max threads at a time
+MAX_WORKERS = 5 # max threads at a time
 
 gainRatio = 1.5 # takeProfit = -stopLoss*gainRatio
 stopLossMargin = 0.05 # extra margin for the stop loss
@@ -15,8 +15,8 @@ operEquity = 10000 # defines the target amount per execution
 limitOrderMargin = 0.1# defines the offset for the limit orders
 
 #### FILL THESE VALUES ###########################
-API_KEY = ""
-API_SECRET_KEY = ""
+API_KEY = "PK1KX6DNCFUPS7J20AMT"
+API_SECRET_KEY = "KGyzNCiy3lbVbFmLwmIZbFCMaakE70WiQbaIvUMq"
 ALPACA_API_URL = "https://paper-api.alpaca.markets"
 #### FILL THESE VALUES ###########################
 
@@ -55,7 +55,7 @@ timeouts = {
         'GT':0 # if 0, it discards a bad general trend instantly
         }
 
-# temps d'espera per a cada iteració
+# wait times for each iteration
 sleepTimes = {
                 'operation':60,
                 'GT': 10*60, # general trend
